@@ -1,0 +1,26 @@
+#Задание 1 
+integer_var=52
+float_var = 1.23
+string_var="pluug"
+list_var=[1, 2, 3, 4, 5, 6, 7, 8, 9]
+turple_var=(10, 20, 30)
+dict_var={"chimichango", 77}
+set_var={3, 2, 1}
+bool_var = True
+print(integer_var, float_var, string_var, list_var, turple_var, dict_var, set_var, bool_var)
+#Задание 2 
+name="Olezch"
+age="18"
+average_grade=4
+favorite_movies=["i don't no"]
+personal_info={"Omelianenko"}
+skills={"jump": 99}
+visited_countres= {"Moscow", "Paris", "Niger"}
+has_driver_licensen = False
+print(name, age, average_grade, favorite_movies, personal_info, skills, visited_countres, has_driver_licensen)
+#Задание 3 
+procesor= "intel"
+ram=15
+internet_speed= "230"
+pc=[procesor, internet_speed, ram]
+print(pc) 
