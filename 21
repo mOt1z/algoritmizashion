@@ -1,0 +1,26 @@
+import random
+
+class BankAccount:
+    def __init__(self, owner, balance=0.0):
+        self.owner = owner
+        self.balance = balance
+        self.account_number = ''.join(str(random.randint(0, 9)) for _ in range(10))
+    
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposited: {amount}. New balance: {self.balance}")
+    
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrawn: {amount}. New balance: {self.balance}")
+        else:
+            print("Insufficient funds.")
+    
+    def get_balance(self):
+        return self.balance
+
+owner_1 = BankAccount("N. Muller", 10000)
+print(f"Account: {owner_1.account_number}, Balance: {owner_1.get_balance()}")
+owner_1.deposit(5000)
+owner_1.withdraw(3000)
