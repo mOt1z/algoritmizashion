@@ -104,3 +104,29 @@ car_2.info_car()
 race_1 = Race("Кольцевые автогонки")
 race_1.append_participants(car_1, car_2)
 race_1.start_race()
+
+#задание 4
+class MusicFile:
+    def play(self):
+        print("Воспроизведение аудио файла...")
+
+class MP3File(MusicFile):
+    def play(self):
+        print("Воспроизведение MP3 файла")
+
+class WAVFile(MusicFile):
+    def play(self):
+        print("Воспроизведение WAV файла")
+
+class FLACFile(MusicFile):
+    def play(self):
+        print("Воспроизведение FLAC файла")
+
+def play_music(files: list):
+    for file in files:
+        file.play()
+
+music_files = [MP3File(), WAVFile(), FLACFile()]
+
+play_music(music_files)
+        
