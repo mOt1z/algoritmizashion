@@ -1,0 +1,63 @@
+python
+class User:
+    def __init__(self, username, email, role="user"):
+        self.username = username
+        self.email = email
+        self.role = role
+    
+    def get_info(self):
+        return {
+            "username": self.username,
+            "email": self.email,
+            "role": self.role
+        }
+
+
+class UserAccount(User):
+    def __init__(self, username, email, role="user"):
+        super().__init__(username, email, role)
+        self.__password = None
+        self.__failed_attempts = 0
+        self.__blocked = False
+    
+    def set_password(self, new_password):
+        if self.__blocked:
+            print("Аккаунт заблокирован. Установка пароля невозможна.")
+            return
+        
+        self.__password = new_password
+        self.__failed_attempts = 0
+        print("Пароль успешно установлен.")
+    
+    def check_password(self, password):
+        if self.__blocked:
+            print("Аккаунт заблокирован.")
+            return False
+        
+        if self.__password == password:
+            self.__failed_attempts = 0
+            print("Вход выполнен успешно!")
+            return True
+        else:
+            self.__failed_attempts += 1
+            print(f"Неверный пароль! Попытка {self.__failed_attempts}/3.")
+            
+            if self.__failed_attempts >= 3:
+                self.__blocked = True
+                print("Аккаунт заблокирован из-за 3 неудачных попыток.")
+            return False
+    
+    def reset_password(self, new_password):
+        if self.role != "admin":
+            print("У вас нет прав для сброса пароля!")
+            return
+        
+        self.__password = new_password
+        self.__failed_attempts = 0
+        self.__blocked = False
+        print("Пароль сброшен администратором.")
+    
+    def increase_failed_attempts(self):
+        self.__failed_attempts += 1
+        if self.__failed_attempts >= 3:
+            self.__blocked = True
